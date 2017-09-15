@@ -39,4 +39,7 @@ $(PDF) : $(TEX)/report.tex $(TEX)/header.tex $(INCLUDES)/network_gv.pdf
 # Удаление ВСЕХ временных файлов
 clean:
 	find $(TEX)/ -regextype posix-egrep -type f ! -regex ".*\.(sty|tex|clo|cls|bib|bst|gitignore)" -exec $(RM) {} \; ;
+	$(RM) graphs/network.gv
+	$(RM) $(INCLUDES)/network_gv.tex
+	$(RM) $(PDF)
 
