@@ -6,10 +6,7 @@ PDF=report.pdf
 
 # Используемые программы
 PDFLATEX = pdflatex -interaction=nonstopmode
-
-D2T=utils/dot2tex -f pgf  --crop --prog=neato
-# neato
-
+D2T=utils/dot2tex -f tikz  --crop --prog=neato
 L2D=utils/lab2dot
 
 LAB=../net
@@ -42,4 +39,7 @@ $(PDF) : $(TEX)/report.tex $(TEX)/header.tex $(INCLUDES)/network_gv.pdf
 # Удаление ВСЕХ временных файлов
 clean:
 	find $(TEX)/ -regextype posix-egrep -type f ! -regex ".*\.(sty|tex|clo|cls|bib|bst|gitignore)" -exec $(RM) {} \; ;
+	$(RM) graphs/network.gv
+	$(RM) $(INCLUDES)/network_gv.tex
+	$(RM) $(PDF)
 
